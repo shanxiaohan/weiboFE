@@ -1,0 +1,24 @@
+{
+	"cloud": [
+        {"name": "baby","value": 10000},
+        {"name": "北京","value": 300},
+        {"name": "绝对计划","value": 6181},
+        {"name": "非常完美","value": 4386},
+        {"name": "词语","value": 4055},
+        {"name": "爱国者","value": 2467},
+        {"name": "何以笙箫默","value": 2244},
+        {"name": "小时代4","value": 1898},
+        {"name": "黄奕","value": 1484},
+        {"name": "天生一对","value": 1112},
+        {"name": "哈哈","value": 965},
+        {"name": "北京冬奥会","value": 847},
+        {"name": "北京马拉松","value": 582},
+        {"name": "一起","value": 555},
+        {"name": "KXAN","value": 550},
+        {"name": "栀子花开","value": 462},
+        {"name": "奔跑吧，兄弟","value": 366},
+        {"name": "爸爸回来了","value": 360},
+        {"name": "中国好声音","value": 282},
+        {"name": "天天向上","value": 273}
+    ]
+}

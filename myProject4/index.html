@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>微博情感分析</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- <link rel="stylesheet" href="src/common/css/main.less?r[__version__]=1" /> -->
+
+    <link rel="stylesheet" href="dep/bootstrap/dist/css/bootstrap.min.css?r[__version__]=1" />
+
+
+    <script src="./esl.js"></script>
+   
+    <style>
+
+        body{
+            background: url(../img/bk3.png);
+            /*防止固定在顶部的导航条遮住上面的内容*/
+            /*padding-top: 120px;      */
+        }
+
+        @media (min-width: 768px) {
+            .weibo-col {
+                width: 50%;
+            }
+        }
+         @media (max-width: 767px) {
+            .weibo-col {
+                width: 100%;
+            }
+        }
+
+       /* #highcharts-8 > svg > g.highcharts-data-labels.highcharts-tracker > g > rect{
+            stroke-width='0';
+        }*/
+
+/*        *[@id="highcharts-8"]/svg/g[3]/g/rect
+*/       
+    </style>
+    
+</head>
+<!--  给整个body添加监听元素，data-target为id为myScrollspy元素-->
+ <body data-spy="scroll" data-target="#myScrollspy">
+
+
+    <!-- 若要使导航栏居中显示可以加上类属性 navbar-fixed-top -->
+    <nav class="navbar navbar-default" style="background-color:rgba(0,226,252,0.25); height: 80px;">
+        <!-- 自适应浏览器大小的布局 && 导航条固定的居中布局 （container布局容器固定宽度，container-fluid流式布局容器为100%宽度，占据整个视图） -->
+      <div class="container-fluid" style="margin:0 auto;">
+        <div class="navbar-header">
+            
+            <!-- 导航条的商标-->
+            <p class="navbar-text" style="font-family:'微软雅黑'; font-size:25px; background:url(../img/head.png); color:#00e5ff; text-shadow: 0 0 0px #00e5ff, 0 0 0px #00e5ff, 0 0 10px #00e5ff, 0 0 0px #00e5ff, 0 0 1px #00e5ff; float:left; width:300px;"> <img src="../img/logo2.png" />&nbsp;&nbsp;&nbsp;新浪微博情感分析</p>
+          <!-- <a class="navbar-brand" href="#" style="font-family:'微软雅黑'; font-size:25px;background:url(../img/head.png); color:#00e5ff; text-shadow: 0 0 0px #00e5ff, 0 0 0px #00e5ff, 0 0 10px #00e5ff, 0 0 0px #00e5ff, 0 0 1px #00e5ff;"><p class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新浪微博情感分析</p></a> -->
+        
+        </div>
+        <!-- 下拉菜单,选择话题-->
+           <!--    <div class="navbar-collapse collapse" style="float:right;padding-top: 10px;width:300px;">
+                <ul class="nav navbar-nav" style="margin:0 auto;">
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-family:'微软雅黑'; font-size:15px; color:rgb(210,216,221);">选择话题 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#feature-tab" data-tab="tab-chrome">Chrome</a></li>
+                            <li><a href="#feature-tab" data-tab="tab-firefox">Firefox</a></li>
+                            <li><a href="#feature-tab" data-tab="tab-safari">Safari</a></li>
+                            <li><a href="#feature-tab" data-tab="tab-opera">Opera</a></li>
+                            <li><a href="#feature-tab" data-tab="tab-ie">IE</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div> -->
+
+      </div>
+    </nav>
+    <!-- bootstrap栅格布局 -->
+    <div class="row" style="clear:both;">
+        <div class="col-md-2" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" id="nav" style="font-family:'微软雅黑'; font-size:15px; color:rgb(210,216,221);">
+                <li class="active"><a href="#emotionAnalysis" style="text-align:center; font-size:18px;">&nbsp;微博情感分析</a></li>
+                <li><a href="#emotionAnalysis" style="text-align:center;color:rgb(210,216,221);" >情感值时间走势</a></li>
+                <!-- <li><a href="#forwardTimeTrend">转发量时间走势</a></li>
+                <li><a href="#userInteraction">用户互动数</a></li> -->
+                <li><a href="#userinfo" style="text-align:center;color:rgb(210,216,221);">用户信息</a></li>
+                <li><a href="#userGeographDistr" style="text-align:center;color:rgb(210,216,221);">用户地域分布</a></li>
+                <li><a href="#keyWord" style="text-align:center;color:rgb(210,216,221);">关键词</a></li>
+                <li><a href="#latestUser" style="text-align:center;color:rgb(210,216,221);">最新参与用户</a></li>
+                <!-- <li><a href="#popularAuthor">人气作者TOP10</a></li>
+                <li><a href="#microblogiValue">微博价值</a></li> -->
+                <li class="divider"></li>
+                <li><a class="back-to-top" href="#top" style="text-align:center;">返回顶部</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <span>微博内容</span> 
+                </div>
+                <div class="panel-body" id="content" style="width:650px;height:200px;float:left"></div>
+                <div id="emotionAve" style="width:300px;height:200px;float:left;">
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+<!-- 
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span>情感分析</span>    
+                </div>
+                <div class="panel-body">
+                    <div id="emotionAny"></div>
+                    <div id="emotionDis" style="height:350px;" ></div>
+                </div>
+            </div> -->
+            
+            <!-- <div class="panel panel-default">
+                <div class="panel-heading">转发量时间走势</div>
+                <div class="panel-body">
+                    <div id="forwardTimeTrendChart"></div>
+                </div>
+            </div> -->
+
+            <div>
+                <div class="panel panel-info">
+                <div class="panel-heading" id="emotionAnalysis">情感值时间走势</div>
+                <div class="panel-body">
+                    <div id="userInteract"></div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading" id="userinfo">用户信息</div>
+                <div class="panel-body" >
+                    <div id="sexPie" class="weibo-col" style="float:left; height:300px;"></div>
+                    <div id="vipPie" class="weibo-col" style="float:left; height:300px;"></div>
+                    <div id="terminalPie" class="weibo-col" style="float:left; height:350px;"></div>
+                    <div id="agePie" class="weibo-col" style="float:left; height:350px;"></div>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading" id="userGeographDistr">用户地域分布</div>
+                <div class="panel-body">
+                   <div id="userMap" style="height:400px; background-color: rgba(25,74,106,0.5);"></div>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading" id="keyWord">关键词</div>
+                <div class="panel-body">
+                    <div id="keyWords" style="height:300px;"></div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading" id="latestUser">最近参与用户</div>
+                <div class="panel-body">
+                    <ul id="recentUser"></ul>
+                </div>
+            </div>
+
+            <!-- <div class="panel panel-default">
+                <div class="panel-heading">人气作者TOP10</div>
+                <div class="panel-body">
+                Panel content
+                </div>
+            </div> -->
+            <!-- <div class="panel panel-default">
+                <div class="panel-heading">微博价值</div>
+                <div class="panel-body">
+                Panel content
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script>
+    require.config({
+        'urlArgs': 'r[__version__]=1',
+        'waitSeconds': 1000,
+        'baseUrl': 'src',
+        'paths': {},
+        'packages': [
+            {
+                'name': 'bat-ria',
+                'location': '../dep/bat-ria/0.2.4/src',
+                'main': 'main'
+            },
+            {
+                'name': 'ef',
+                'location': '../dep/ef/3.1.0-beta.3/src',
+                'main': 'main'
+            },
+            {
+                'name': 'eicons',
+                'location': '../dep/eicons/1.0.0-beta.1/src',
+                'main': 'main.less'
+            },
+            {
+                'name': 'eoo',
+                'location': '../dep/eoo/0.1.2/src',
+                'main': 'main'
+            },
+            {
+                'name': 'er',
+                'location': '../dep/er/3.1.0-beta.6/src',
+                'main': 'main'
+            },
+            {
+                'name': 'er-track',
+                'location': '../dep/er-track/0.9.1/src',
+                'main': 'main'
+            },
+            {
+                'name': 'esf',
+                'location': '../dep/esf/1.0.0-beta.1/src'
+            },
+            {
+                'name': 'est',
+                'location': '../dep/est/1.3.0/src'
+            },
+            {
+                'name': 'esui',
+                'location': '../dep/esui/3.1.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'etpl',
+                'location': '../dep/etpl/3.0.0/src',
+                'main': 'main'
+            },
+            {
+                'name': 'jquery',
+                'location': '../dep/jquery/1.9.1/src',
+                'main': 'jquery'
+            },
+            {
+                'name': 'mini-event',
+                'location': '../dep/mini-event/1.0.2/src',
+                'main': 'main'
+            },
+            {
+                'name': 'moment',
+                'location': '../dep/moment/2.7.0/src',
+                'main': 'moment'
+            },
+            {
+                'name': 'underscore',
+                'location': '../dep/underscore/1.8.5/src',
+                'main': 'underscore'
+            },
+            {
+                'name': 'urijs',
+                'location': '../dep/urijs/1.12.0/src',
+                'main': 'URI'
+            },
+            {
+                'name': 'json2',
+                'location': '../dep/json2/1.0.0/src',
+                'main': 'json2'
+            },
+            {
+                'name': 'jquery.cookie',
+                'location': '../dep/jquery.cookie/1.4.0',
+                'main': 'jquery.cookie'
+            },
+            {
+                'name': 'highcharts',
+                'location': '../dep/highcharts/2.0.3/src',
+                'main': 'main'
+            },
+            {
+                'name': 'codemirror',
+                'location': '../dep/codemirror',
+                'main': 'lib/codemirror'
+            },
+            {
+                "name": "echarts",
+                "location": "../dep/echarts/2.2.7/src",
+                "main": "echarts"
+            },
+            {
+                "name": "zrender",
+                "location": "../dep/zrender/2.1.1/src",
+                "main": "zrender"
+            }
+        ]
+    });
+    </script>
+    <script>
+    require(['common/main'], function (main) {
+        main.init();
+    });
+    </script>
+</body>
+</html>

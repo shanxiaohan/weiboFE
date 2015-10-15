@@ -1,0 +1,320 @@
+				/* © 2015 Anselm Urban */
+				/* DEMO STYLING */
+				
+				body {
+				padding-top: 0px;
+				padding-bottom: 40px;
+				color: #5a5a5a;
+				}
+				
+				/* 轮播广告 */
+				
+				.carousel {
+				height: 500px;
+				margin-bottom: 0px;
+				margin-top: 0px;
+				}
+				
+				.carousel .item {
+				height: 500px;
+				background-color: #000;
+				}
+				
+				.carousel .item img {
+				width: 100%;
+				}
+				
+				.carousel-caption {
+				z-index: 10;
+				}
+				
+				.carousel-caption p {
+				/*margin-bottom: 20px;*/
+				font-size: 100px;    /*修改标题的字体*/
+				line-height: 1.8;
+				}
+				
+				#weiboHead{
+				margin-top: -100px;
+				}
+				
+				
+				
+				/* 响应式布局 */
+				
+				@media (max-width: 768px) {
+				
+				.summary {
+				padding-right: 3px;
+				padding-left: 3px;
+				}
+				
+				.carousel {
+				height: 300px;
+				margin-bottom: 30px;
+				}
+				
+				.carousel .item {
+				height: 300px;
+				}
+				
+				.carousel img {
+				min-height: 300px;
+				}
+				
+				
+				
+				.feature-heading {
+				font-size: 34px;
+				}
+				
+				.feature-heading .text-muted {
+				font-size: 22px;
+				}
+				}
+				
+				@media (min-width: 992px) {
+					.feature-heading {
+						margin-top: 120px;
+					}
+				}
+
+
+/*轮播第二页的搜索框*/
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.clearfix input {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1.5em;
+	margin: 0;
+	outline: none;
+	padding: 0;
+	-webkit-appearance: none;
+}
+
+.clearfix input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.clearfix input[type="search"]::-webkit-search-cancel-button,
+.clearfix input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+.clearfix { *zoom: 1; }
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;	
+}
+.clearfix:after { clear: both; }
+
+#searchform {
+	
+	left: 30%;
+	margin: -22px 0 0 -141px;
+	position: absolute;
+	top: 30%;
+}
+
+
+
+#search {
+	height: 40px;
+	width: 380px;
+	background: rgba(235,235,235,0);
+	
+	border-radius: 3px;
+	display: inline-block;
+	padding: 7px;
+}
+
+#search input {
+	float: left;
+}
+
+#search input[type="search"],
+#search input[type="submit"] {
+	border-radius: 3px;
+	font-size: 18px;
+}
+
+#search input[type="search"] {
+	background: #fff;
+	color: #42454e;
+	min-width: 250px;
+	
+	padding: 6px 8px;
+}
+
+#search input[type="submit"] {
+	background: #1bba9a;
+	color: #fff;
+	min-height: 120%;
+	font-weight: bold;
+	margin-left: 7px;
+	padding: 6px 10px;
+}
+
+#search input[type="submit"]:hover {
+	background: #189e83;
+}
+
+#search input[type="search"]::-webkit-input-placeholder { color: #42454e; }
+#search input[type="search"]:-moz-placeholder { color: #42454e; }
+#search input[type="search"]:-ms-input-placeholder { color: #42454e; }
+
+
+				/*色块选择话题*/
+
+				.thumbnail-grid {
+				box-sizing: border-box;
+				font-size: 62.5%;
+				height: 100%;
+				background-color: rgba(0,0,0,0);
+				}
+				/*html {
+				font-size: 62.5%;
+				height: 100%
+				} */
+				.thumbnail-grid {
+				font-size: 15px;
+				font-size: 1.5rem;
+				font-family: source-sans-pro,"Helvetica Neue",HelveticaNeue,TeXGyreHeros,FreeSans,"Nimbus Sans L","Liberation Sans",Arimo,Helvetica,Arial,sans-serif;
+				color: #282828;
+				/*background-color: #f4f4f4;*/
+				z-index: 0;
+				/*max-width: 60em;*/
+				width: 100%;
+				/*margin: auto;*/
+				padding-top: 30px;
+				padding-bottom: 20px;
+				transition: all 0.2s ease-in-out;
+				text-rendering: optimizeLegibility;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				user-select: text
+				}
+				.flex-item {
+				color: #282828;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+				}
+				a .flex-item:hover {
+				text-decoration: none
+				}
+				a:focus {
+				outline: none
+				}
+				.flex-item p {
+				text-align: center;
+				hyphens: auto
+				}
+				
+				/* END demo styling */
+				
+				
+				
+				.thumbnail-grid {
+				user-select: none
+				}
+				.thumbnail-grid figure {
+				position: relative;
+				min-width: 25%;
+				height: 250px;		/*色块的高度*/
+				margin: 5px;
+				border-radius: 3px;
+				box-shadow: inset 0 -40px 0 0 rgba(0, 0, 0, 0.1);
+				transition: all .2s ease-in-out
+				}
+				.thumbnail-grid figure:hover {
+				box-shadow: inset 0 -150px 0 0 rgba(0, 0, 0, 0.4)
+				}
+				.thumbnail-grid figcaption {
+				position: absolute;
+				width: 100%;
+				font-weight: 500;
+				font-size: 2em;
+				height: 60px;
+				padding-top: 20px;
+				text-align: center;
+				color: #f4f4f4;
+				text-shadow: 0 0 20x black;
+				bottom: 5px;
+				transition: all .2s ease-in-out
+				}
+				.thumbnail-grid figure:hover figcaption {
+				bottom: 60px   
+				}
+				.flex {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				align-items: stretch;
+				align-content: stretch
+				}
+				.flex-item {
+				flex: 1 0 auto
+				}
+				
+				.figcaption .btn{
+					padding:0px;
+
+				}
+				
+				
+				.thumbnail-grid figure.i1 {
+				background-color: #F69679;
+				width: 80%;
+				/*background: url(https://anselmurban.de/codepen-img/sinfonietta-meridiana.png) no-repeat center;*/
+				background-size: cover
+				}
+				.thumbnail-grid figure.i2 {
+				background-color: #C4DF9B;
+				width: 75%;
+				/*background: url(https://anselmurban.de/codepen-img/pension.png) no-repeat center;*/
+				background-size: cover
+				}
+				.thumbnail-grid figure.i3 {
+					width: 75%;
+					background-color: #A186BE;
+				/*background: url(https://anselmurban.de/codepen-img/goerlitzmade.png) no-repeat center;*/
+				background-size: cover
+				}
+				.thumbnail-grid figure.i4 {
+					width: 75%;
+					background-color:rgba(149, 207, 184, 0.7);
+					/*background-color:rgba(65, 166, 180, 0.6);*/
+					background-size: cover
+				}
+				
+				
+				
+				@media print,
+				(-o-min-device-pixel-ratio: 5/4),
+				(-webkit-min-device-pixel-ratio: 1.25),
+				(min-resolution: 120dpi) {
+				.thumbnail-grid figure.i1 {
+				/*background-image: url(https://anselmurban.de/codepen-img/sinfonietta-meridiana%402x.png)*/
+			
+				}
+				.thumbnail-grid figure.i2 {
+				/*background-image: url(https://anselmurban.de/codepen-img/pension%402x.png)*/
+				
+				}
+				.thumbnail-grid figure.i3 {
+				/*background-image: url(https://anselmurban.de/codepen-img/goerlitzmade%402x.png)*/
+				}
+				.thumbnail-grid figure.i4 {
+				/*background-image: url(https://anselmurban.de/codepen-img/sinfonietta-meridiana%402x.png)*/
+			
+				}
+				}

@@ -1,0 +1,5 @@
+{
+  "name": "highcharts",
+  "version": "2.0.3",
+  "main": "./src/highstock.js"
+}
