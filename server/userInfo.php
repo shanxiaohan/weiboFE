@@ -6,7 +6,7 @@
 	//$topic_id=$_GET["topic_id"];
 
 	$con = mysql_connect('localhost','root','123456');
-	if (!mysql_select_db("result",$con)){
+	if (!mysql_select_db("statistic_result",$con)){
 		die(mysql_error());
 	}
 	mysql_query("set names utf8");
@@ -52,8 +52,9 @@
 	//用户终端
 	function terminal(){
 		global $con;
+		$topic_id=$_GET['topic_id'];
 		//$sql="select `count_u_v`,`count_u_c`,`count_u_o` from `base_info` where `topic_id`=$topic_id";
-		$sql="select `source` ,`count`  from `result_terminal` where `topic_id`=1";
+		$sql="select `source` ,`count`  from `result_terminal` where `topic_id`=$topic_id";
 	
 		$res=mysql_query($sql, $con);
 		//$row = mysql_fetch_row($res);
@@ -81,8 +82,9 @@
 	function vip_callback(){
 		
 		global $con;
+		$topic_id=$_GET['topic_id'];
 		//$sql="select `count_u_v`,`count_u_c`,`count_u_o` from `base_info` where `topic_id`=$topic_id";
-		$sql="select `count_u_v`,`count_u_c`,`count_u_o` from `base_info` where `topic_id`=1";
+		$sql="select `count_u_v`,`count_u_c`,`count_u_o` from `base_info` where `topic_id`=$topic_id";
 
 		$res=mysql_query($sql, $con);
 		$row = mysql_fetch_row($res);
@@ -106,7 +108,8 @@
 		$jsonp=$_GET["callback"];
 		global $con ;
 		//$sql="select * from base_info  where topic_id=$topic_id";
-		$sql="select `count_g_female`,`count_g_male`,`count_g_x` from `base_info` where `topic_id`=1";
+		$topic_id=$_GET['topic_id'];
+		$sql="select `count_g_female`,`count_g_male`,`count_g_x` from `base_info` where `topic_id`=$topic_id";
 		
 		$res=mysql_query($sql, $con);
 		$row = mysql_fetch_row($res);

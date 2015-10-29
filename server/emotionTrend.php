@@ -6,7 +6,7 @@
 	//$topic_id=$_GET["topic_id"];
 
 	$con = mysql_connect('localhost','root','123456');
-	if (!mysql_select_db("result",$con)){
+	if (!mysql_select_db("statistic_result",$con)){
 		die(mysql_error());
 	}
 	mysql_query("set names utf8");

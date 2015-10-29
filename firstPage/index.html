@@ -34,7 +34,8 @@
         <div class="item">
             <img src="images/head2.jpg" alt="2 slide">
 
-            <div class="container" id="searchform">
+            <div class="container" id="searchform" style="width:100px;">
+
                 <div id="search">
                     <form action="javascript:void(0);" method="GET">
                         <fieldset class="clearfix">
@@ -47,7 +48,25 @@
                     </form>
 
                 </div> <!-- end search -->
+
+                 <!-- 下拉菜单 -->
+            <div class="dropdown" style="width=300px; margin:80px 120px;">
+                <button class="btn btn-primary dropdown-toggle btn-lg" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Choose a topic please~
+                <!-- 下拉菜单向下的小箭头 -->
+                <span class="caret"></span> 
+                </button>  
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="http://10.109.247.109:8848/index.html?topic_id=35">T-ara完全疯了</a></li>
+                  <li><a href="http://10.109.247.109:8848/index.html?topic_id=215">带着微博去旅行</a></li>
+                  <li><a href="http://10.109.247.109:8848/index.html?topic_id=34">SEHUN</a></li>
+
+                </ul>
+          </div>
+
             </div>
+
+           
         </div>  
     </div>
 
@@ -64,22 +83,22 @@
       <div class="flex-item" id="1">
 
       <figure class="i1">
-      <figcaption><button type="button" class="btn btn-success" id="topic_1">#瞬间觉得好孤独#</button></figcaption>
+      <figcaption><button type="button" class="btn btn-success" id="topic_1">#杨洋icon#</button></figcaption>
       </figure>
       </div>
       <div class="flex-item" id="topic_2">
       <figure class="i2">
-      <figcaption><button type="button" class="btn btn-default" id="topic_2" style="font-size:1.2em;">#琅琊榜#</button></figcaption>
+      <figcaption><button type="button" class="btn btn-default" id="topic_2">#我的等级连续登录#</button></figcaption>
       </figure>
       </div>
       <div class="flex-item" id="topic_3">
       <figure class="i3">
-      <figcaption><button type="button" class="btn btn-primary" id="topic_3">#吃货的千字情书#</button></figcaption>
+      <figcaption><button type="button" class="btn btn-primary" id="topic_3">#她很漂亮#</button></figcaption>
       </figure>
       </div>
       <div class="flex-item" id="topic_4">
       <figure class="i4">
-      <figcaption><button type="button" class="btn btn-primary" id="topic_4">#3000买一夜#</button></figcaption>
+      <figcaption><button type="button" class="btn btn-primary" id="topic_4">#八月你好#</button></figcaption>
       </figure>
       </div>
       
@@ -112,25 +131,25 @@
 
   $("#topic_1").click(function(){
 
-    window.location.href='http://10.108.115.109:8848/index.html?topic_id=1';
+    window.location.href='http://10.109.247.109:8848/index.html?topic_id=318';
    
   });
 
    $("#topic_2").click(function(){
 
-    window.location.href='http://127.0.0.1:8848/index.html?topic_id=2';
+    window.location.href='http://10.109.247.109:8848/index.html?topic_id=261';
    
   });
 
     $("#topic_3").click(function(){
 
-    window.location.href='http://10.108.115.109:8848/index.html?topic_id=3';
+    window.location.href='http://10.109.247.109:8848/index.html?topic_id=186';
    
   });
 
      $("#topic_4").click(function(){
 
-    window.location.href='http://10.108.115.109:8848/index.html?topic_id=4';
+    window.location.href='http://10.109.247.109:8848/index.html?topic_id=113';
    
   });
 
